@@ -1,0 +1,76 @@
+<?xml
+    version="1.0"
+    encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:animations="clr-namespace:Animations;assembly=Animations"
+             x:Class="Animations.OldWayPage"
+             Title="Hvem er du"
+             Padding="25">
+    <ContentPage.Content>
+        <Grid Grid.RowDefinitions="*, Auto">
+            <StackLayout Grid.Row="0"
+                         x:Name="StackLayoutWithEntries">
+                <Grid Grid.ColumnDefinitions="*, 10">
+                    <Entry Grid.Column="0"
+                           x:Name="firstNameEntry"
+                           Placeholder="Fornavn"
+                           TextChanged="AgeEntry_OnTextChanged" />
+
+                    <Label Grid.Column="1"
+                           Text="*"
+                           IsVisible="{Binding Source={x:Reference firstNameEntry}, Path=Text, Converter={animations:IsEmptyConverter}}"
+                           TextColor="Red" />
+                </Grid>
+
+                <Grid Grid.ColumnDefinitions="*, 10">
+                    <Entry Grid.Column="0"
+                           Placeholder="Hva heter katten din?" />
+                </Grid>
+
+                <Grid Grid.ColumnDefinitions="*, 10">
+                    <Entry Grid.Column="0"
+                           x:Name="lastNameEntry"
+                           Placeholder="Etternavn"
+                           TextChanged="AgeEntry_OnTextChanged" />
+                    <Label Grid.Column="1"
+                           Text="*"
+                           IsVisible="{Binding Source={x:Reference lastNameEntry}, Path=Text, Converter={animations:IsEmptyConverter}}"
+                           TextColor="Red" />
+                </Grid>
+
+                <Grid Grid.ColumnDefinitions="*, 10">
+                    <Entry Grid.Column="0"
+                           Placeholder="Hvem er din beste venn?"/>
+                </Grid>
+
+                <Grid Grid.ColumnDefinitions="*, 10">
+                    <Entry Grid.Column="0"
+                           x:Name="ageEntry"
+                           Placeholder="Alder"
+                           Keyboard="Numeric"
+                           TextChanged="AgeEntry_OnTextChanged" />
+                    <Label Grid.Column="1"
+                           Text="*"
+                           IsVisible="{Binding Source={x:Reference ageEntry}, Path=Text, Converter={animations:IsEmptyConverter}}"
+                           TextColor="Red" />
+                </Grid>
+
+                <Grid Grid.ColumnDefinitions="*, 10">
+                    <Entry Grid.Column="0"
+                           Placeholder="Noe annet?" />
+                </Grid>
+
+            </StackLayout>
+            <Button Grid.Row="1"
+                    x:Name="SendButton"
+                    Opacity="0.5"
+                    Clicked="SendButton_OnClicked"
+                    Text="Send"
+                    BackgroundColor="Teal"
+                    TextColor="White"
+                    VerticalOptions="End" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
